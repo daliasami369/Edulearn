@@ -1,0 +1,195 @@
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'css/signup_teacher.css' %}">
+    <title>Sign Up</title>
+</head>
+<body>
+   <div class="EduLearn">
+                 <img src="{% static 'images/التخرج.png' %}" alt="Logo" class="logo">
+                <sup>EduLearn</sup>
+    </div>
+    {% if error %}
+    <p style="color:red;">
+    {{ error }}
+    </p>
+{% endif %}
+    <form method="POST" enctype="multipart/form-data" class="form">
+{% csrf_token %}
+
+<h2 class="title">👨‍🏫 Teacher Registration</h2>
+
+<h3 class="section-title">
+Personal Information
+</h3>
+
+<div class="personal-grid">
+
+    <div class="form-group">
+        <label>First Name</label>
+        <input type="text" name="FirstName" placeholder="First Name">
+    </div>
+
+    <div class="form-group">
+        <label>Second Name</label>
+        <input type="text" name="SecondName" placeholder="Second Name">
+    </div>
+
+    <div class="form-group">
+        <label>User Name</label>
+        <input type="text" name="UserName" placeholder="User Name" required>
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="Password" placeholder="Password">
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        <input type="text" name="Address" placeholder="Address">
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="Email" placeholder="Email">
+    </div>
+
+    <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" name="Phone" placeholder="Phone">
+    </div>
+
+</div>
+    <div class="image-upload">
+
+    <img id="preview"
+     src="{% static 'images/user.png' %}"
+     alt="Profile">
+
+    <label for="photo" class="upload-btn">
+        👤
+        <br>
+        اضغط لاختيار صورة
+    </label>
+
+    <input
+        type="file"
+        id="photo"
+        name="image"
+        accept="image/*"
+        hidden>
+
+</div>
+
+  <label><b>Subjects</b></label>
+
+<h3 class="section-title">
+Teaching Subjects
+</h3>
+
+<div class="subjects-grid">
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="اللغة العربية">
+<span>📚 اللغة العربية</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="اللغة الانجليزية">
+<span>🇬🇧 اللغة الإنجليزية</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="اللغة الفرنسية">
+<span>🇫🇷 اللغة الفرنسية</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="اللغة الالمانية">
+<span>🇩🇪 اللغة الألمانية</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="الرياضيات">
+<span>➗ الرياضيات</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="الفيزياء">
+<span>⚛ الفيزياء</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="الكيمياء">
+<span>🧪 الكيمياء</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="الاحياء">
+<span>🧬 الأحياء</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="العلوم">
+<span>🔬 العلوم</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="العلوم المتكاملة">
+<span>🌍 العلوم المتكاملة</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="التاريخ">
+<span>📖 التاريخ</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="الجغرافيا">
+<span>🗺️ الجغرافيا</span>
+</label>
+
+<label class="subject-card">
+    <input type="checkbox" name="subjects" value="التاريخ الوطني">
+    <span>🏺 التاريخ الوطني</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="الدراسات الاجتماعية">
+<span>🏛️ الدراسات الاجتماعية</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="الفلسفة والمنطق">
+<span>💭 الفلسفة والمنطق</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="علم النفس">
+<span>🧠 علم النفس</span>
+</label>
+
+<label class="subject-card">
+<input type="checkbox" name="subjects" value="البرمجة">
+<span>💻 البرمجة</span>
+</label>
+
+</div>
+     
+
+      <div class="buttons">
+
+<button type="submit" id="signupbtn">Create Account</button>
+
+<button type="button" class="cancel">Cancel</button>
+
+</div>
+    </form>
+       <script src="{% static 'js/signup_student.js' %}"></script>
+    
+</body>
+</html>

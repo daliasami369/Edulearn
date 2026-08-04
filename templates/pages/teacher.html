@@ -1,0 +1,359 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/teacher.css' %}">
+    <title>Teacher Dashboard</title>
+</head>
+
+<body>
+    <div id="notification"></div>
+    <div class="head">
+        <nav class="navbar">
+
+            <div class="EduLearn">
+                <img src="{% static 'images/التخرج.png' %}" alt="Logo" class="logo">
+                EduLearn
+            </div>
+
+            <div class="nav-links">
+                <a href="home.html"> Home</a>
+                <a href="about.html"> About</a>
+            </div>
+        </nav>
+    </div>
+    <div style="color:rgb(60, 57, 64); font-size: 20px;">
+
+        <p id="TeacherName" style="color:rgb(60, 57, 64); font-size: 20px;"> <b>Welcome Back, {{ teachers.first_name }}
+                {{teachers.second_name}}</b></p>
+        Manage your courses, track student progress,
+        and create engaging learning experiences.
+    </div>
+
+    <div class="container">
+
+        <!-- Dashboard -->
+        <div class="teacher">
+
+            <ul class="dashboard">
+
+                <li class="profile">
+                    {% if teacher.image %}
+                    <img id="imageprofile" src="{{ teacher.image.url }}" alt="profile">
+                    {% else %}
+                    <img id="imageprofile" src="{% static 'images/default.png' %}" alt="profile">
+                    {% endif %}
+                    <h3>{{teachers.username }}</h3>
+                    <h3 id="teacherName"></h3>
+                </li>
+
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <!-- <li><a href="#" onclick="showSection('subjects')">My Subjects</a></li> -->
+                <li><a href="#" onclick="showSection('lessons')">Lessons</a></li>
+                <li><a href="#" onclick="showSection('tests')">Tests</a></li>
+                <li><a href="#" onclick="showSection('students')">My Students</a></li>
+                <li><a href="#" onclick="showSection('chat')">Chats</a></li>
+                <li><a href="#" onclick="showSection('announcements')">Announcements</a></li>
+                <li><a href="#" onclick="showSection('showlesson')">ShowLesson</a></li>
+                <li><a href="#" onclick="showSection('showresulttest')">ShowResultTests</a></li>
+                <li>
+                    <a href="{% url 'index' %}">Logout</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- HOME -->
+            <div id="homeSection">
+
+                <h2>Dashboard Overview</h2>
+                <div class="welcome-banner">
+                    <p>
+                        <img src="{%static 'images/مدرس.png'%}" class="logoteacher" alt="logoteacher">
+                    <p>
+                        Manage your courses, lessons and students
+                        from one place.
+                    </p>
+                    </p>
+
+                </div>
+                <div class="cards-container">
+
+                    <div class="card">
+                        <p>Total Courses = {{ courses_count }}</p>
+                    </div>
+
+                    <div class="card">
+                        <p>Total Students = {{ students_count }}</p>
+                    </div>
+
+                    <div class="card">
+                        <p>Total Lessons = {{ lessons_count }}</p>
+                    </div>
+
+                </div>
+
+                <!-- <h2>Latest Announcements</h2> -->
+
+                {% for announcement in announcements %}
+                <div class="announcement-card">
+                    <h4>{{ announcement.title }}</h4>
+                    <p>{{ announcement.message }}</p>
+                </div>
+                {% endfor %}
+
+                <div class="section-box">
+
+
+                    <!-- <h2>My Courses</h2> -->
+
+                    {% for course in courses %}
+                    <div class="course-card">
+                        {{ course.name }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="section-card">
+                    <h3>Latest Announcements</h3>
+
+                    {% for announcement in announcements %}
+                    <div class="announcement-item">
+                        <strong>{{ announcement.title }}</strong>
+                        <p>{{ announcement.message }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="section-card">
+                    <h3>My Courses</h3>
+
+                    {% for course in courses %}
+                    <div class="course-item">
+                        {{ course.name }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="section-card">
+                    <h3>Recent Students</h3>
+
+                    {% for student in students|slice:":5" %}
+                    <p>{{ student.username }}</p>
+                    {% endfor %}
+                </div>
+                <div class="section-card">
+                    <h3>Upcoming Lessons</h3>
+
+                    {% for lesson in lessons %}
+                    <p>{{ lesson.title }}</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <!-- نهاية homeSection -->
+
+
+
+            <!-- LESSONS -->
+            <div id="lessonsSection" style="display:none;">
+
+                <div class="form-box">
+
+                    <h2>Add Lesson</h2>
+                    <div class="lesson-form">
+                        <input type="text" id="lessonTitle" placeholder="Lesson title">
+
+                        <input type="text" id="lessonDescription" placeholder="Lesson description">
+                        <input type="text" id="lessonLink" placeholder="Lesson Link">
+                        <input type="file" id="lessonPdf" placeholder="lessonPdf">
+                        <select id="lessonLevel">
+                            <option value="الصف الاول الاعدادي">الصف الاول الاعدادي </option>
+                            <option value="الصف الثاني الاعدادي">الصف الثاني الاعدادي </option>
+                            <option value="الصف الثالث الاعدادي">الصف الثالث الاعدادي </option>
+                            <option value="الصف الاول الثانوي">الصف الاول الثانوي </option>
+                            <option value="الصف الثاني الثانوي">الصف الثاني الثانوي </option>
+                            <option value="الصف الثالث الثانوي">الصف الثالث الثانوي </option>
+                        </select>
+                        <button onclick="addLesson()"> Add Lesson </button>
+                    </div>
+                </div>
+            </div>
+            <!-- TESTS -->
+            <div id="testsSection" style="display:none;">
+                <div class="form-box">
+                    <h2>Create Test</h2>
+
+                    <input type="text" id="testTitle" placeholder="Test Title">
+
+                    <input type="number" id="duration" placeholder="Duration">
+
+                    <input type="number" id="totalMarks" placeholder="Total Marks">
+                    <select id="testLevel">
+                        <option value="الصف الاول الاعدادي">الصف الأول الإعدادي</option>
+                        <option value="الصف الثاني الاعدادي">الصف الثاني الإعدادي</option>
+                        <option value="الصف الثالث الاعدادي">الصف الثالث الإعدادي</option>
+                        <option value="الصف الاول الثانوي">الصف الأول الثانوي</option>
+                        <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+                        <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
+                    </select>
+
+                    <button onclick="createTest()">Create Test</button>
+
+                </div>
+            </div>
+            <div id="questionsSection" style="display:none;">
+<div class="form-box">
+                <h2>Add Question</h2>
+
+                <input id="questionText" placeholder="Question">
+
+                <input id="choiceA" placeholder="Choice A">
+
+                <input id="choiceB" placeholder="Choice B">
+
+                <input id="choiceC" placeholder="Choice C">
+
+                <input id="choiceD" placeholder="Choice D">
+
+                <input id="mark" type="number" placeholder="Mark">
+                <br>
+
+                <label><input type="radio" name="correct" value="A">A</label>
+
+                <label><input type="radio" name="correct" value="B">B</label>
+
+                <label><input type="radio" name="correct" value="C">C</label>
+
+                <label><input type="radio" name="correct" value="D">D</label>
+                <br>
+
+                <button onclick="addQuestion()">
+                    Add Question
+                </button>
+
+                <button onclick="finishTest()">
+                    Finish Test
+                </button>
+</div>
+            </div>
+            <!-- ANNOUNCEMENTS -->
+            <div id="announcementsSection" style="display:none;">
+      <div class="form-box">
+                <h2>Announcements</h2>
+
+                <p>Title</p>
+                <input type="text" id="title">
+
+                <p>Message</p>
+                <input type="text" id="message">
+                <select id="AnnouncementLevel">
+                    <option value="الصف الاول الاعدادي">الصف الاول الاعدادي </option>
+                    <option value="الصف الثاني الاعدادي">الصف الثاني الاعدادي </option>
+                    <option value="الصف الثالث الاعدادي">الصف الثالث الاعدادي </option>
+                    <option value="الصف الاول الثانوي">الصف الاول الثانوي </option>
+                    <option value="الصف الثاني الثانوي">الصف الثاني الثانوي </option>
+                    <option value="الصف الثالث الثانوي">الصف الثالث الثانوي </option>
+                </select>
+                <button onclick="sendAnnouncement()"> Send </button>
+</div>
+            </div>
+
+            <!-- CHAT -->
+            <div id="chatSection" style="display:none;">
+  <div class="form-box">
+                <h2 id="chatTitle">Chats</h2>
+
+                <h3 id="chatStudent"></h3>
+
+                <div id="chatBox" class="chat-box"></div>
+
+                <input type="hidden" id="studentId">
+
+                <input type="text" id="teacherMessage" placeholder="Type your message...">
+
+                <button onclick="sendTeacherMessage()">
+                    Send
+                </button>
+
+                <hr>
+
+                <h3>Students</h3>
+
+                {% for student in students_with_messages %}
+
+                <button onclick="openTeacherChat(
+                {{ student.id }},
+                '{{ student.first_name }} {{ student.second_name }}'
+            )">
+
+                    {{ student.first_name }}
+                    {{ student.second_name }}
+
+                </button>
+
+                {% empty %}
+
+                <p>No students yet.</p>
+
+                {% endfor %}
+
+            </div>
+            </div>
+            <!-- STUDENTS -->
+            <div id="mystudentsSection" style="display:none;">
+                <h2>Students</h2>
+
+                {% for student in students %}
+                <div class="student-card">
+                    <h4>{{ student.first_name }} {{ student.second_name }}</h4>
+                    <span>{{ student.level }}</span>
+                </div>
+                {% empty %}
+                <p>No students yet!</p>
+                {% endfor %}
+            </div>
+            <!-- showlesson -->
+            <div id="showlesson" style="display: none;">
+                 <div class="form-box">
+                <h2>My Lessons</h2>
+                {% for lesson in lessons %}
+                <div class="lesson-card">
+                    <h3>{{ lesson.title }}</h3>
+                    <div class="lesson-actions">
+                        <a href="{% url 'edit_lesson' lesson.id %}">تعديل</a>
+                        <a href="{% url 'delete_lesson' lesson.id %}">حذف</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+</div>
+            <!-- showresulttest -->
+            <div id="showresulttest" style="display: none;">
+                <h2>My Tests</h2>
+                {% for test in tests %}
+                <div class="test-card">
+                    <h3>{{ test.title }}</h3>
+                    <div class="test-actions">
+                        <a href="{% url 'test_results' test.id %}">عرض النتائج</a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="{% static 'js/teacher.js' %}"></script>
+
+</body>
+
+</html>

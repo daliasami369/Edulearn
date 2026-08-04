@@ -1,0 +1,436 @@
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/student.css' %}">
+    <title>student Dashboard</title>
+</head>
+<body>
+    <div id="notification"></div>
+    <div class="head">
+        <nav class="navbar">
+
+            <div class="EduLearn">
+                <img src="{% static 'images/التخرج.png' %}" alt="Logo" class="logo">
+                EduLearn
+            </div>
+            
+             <div class="nav-links">
+                    <a href="home.html"> Home</a>
+                  <a href="about.html"> About</a>
+             </div>
+        </nav>
+    </div>
+    <div>
+        
+        <p id="studentName"style="color:rgb(60, 57, 64); font-size: 20px;"> <b>Welcome Back, {{ students.first_name }} {{students.second_name}}</b></p>
+             Continue your learning journey and achieve your goals.
+             Explore courses, watch lessons, complete assignments,
+             and track your progress all in one place.
+    </div>
+
+    <div class="container">
+
+    <!-- Dashboard -->
+    <div class="student">
+
+        <ul class="dashboard">
+
+            <li class="profile">
+                {% if students.image %}
+                  <img id="imageprofile" src="{{ students.image.url }}" alt="profile" >
+                {% else %}
+                   <img id="imageprofile" src="{% static 'images/default.png' %}" alt="profile" >
+                {% endif %}
+                <h3>{{username}}</h3>
+                <h3 id="studentName"></h3>
+            </li>
+
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('subjects')">My Subjects</a></li>
+            <li><a href="#" onclick="showSection('lessons')">Lessons</a></li>
+            <li><a href="#" onclick="showSection('teachers')">My Teachers</a></li>
+            <li><a href="#" onclick="showSection('chat')">Chats</a></li>
+            <li> <a href="#" onclick="showSection('payment')">  Payment </a> </li>
+            <li><a href="#" onclick="showSection('test')">test</a></li>
+            <li>
+                <a href="{% url 'index' %}">Logout</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+        <!-- HOME -->
+        <div id="homeSection">
+
+            <h2>Dashboard Overview</h2>
+        <div class="welcome-banner">
+            <p>
+                       <img src="{%static 'images/طالب.png'%}" class="logostudent" alt="logostudent">
+                       <h1>🎓 Welcome to EduLearn</h1>
+                       <p>
+                            Learn new skills, improve your knowledge, and stay ahead.
+                            Access your courses, lessons, quizzes, and announcements anytime.
+                            Start learning today and build your future with EduLearn. 
+                        </p>
+            </p>
+           
+        </div>
+    <div class="cards-container">
+      <div class="card">
+        <h3>📚 My Courses</h3>
+        <p>View all enrolled courses.</p>
+
+        <p>Total Courses = {{ courses_count }}</p>
+      </div>
+
+    <div class="card">
+       <h3>🎥 Latest Lessons</h3>
+       <p>Continue watching your lessons.</p>
+        {% for lesson in lessons %}
+              <p>{{ lesson.title }}</p>
+                 {% empty %}
+                <p>No lessons.</p>
+        {% endfor %}
+    </div>
+
+   <div class="card">
+      <h3>📝 Upcoming Tests</h3>
+      <p>Prepare for your next assessment.</p>
+       {% for test in tests %}
+      <p>tests ={{tests}}</p>
+      {% endfor %}
+  </div>
+
+   <div class="card">
+         <h3>📢 Announcements</h3>
+         <p>Stay updated with the latest news.</p>
+        {% for announcement in announcements %}
+         <p>announcements ={{announcements}} </p>
+         {% endfor %}
+   </div>
+                    
+     {% for chat in chats %}
+        <div class="chat-card">
+            <h4>{{ chat.title }}</h4>
+            <p>{{ chat.message }}</p>
+             <h3>Teachers</h3>
+
+                {% for teacher in my_teachers %}
+               <div class="contact">
+
+                  <a href="{% url 'chat' teacher.id %}">
+                        {{ teacher.first_name }}
+                        {{ teacher.second_name }}
+                 </a>
+
+               </div>
+
+               {% endfor %}
+        </div>
+       {% endfor %}
+    </div>
+
+       <div class="section-box">
+            <!-- <h2>My Courses</h2> -->
+
+         {% for course in courses %}
+             <div class="course-card">
+                   {{ course.name }}
+                    </div>
+         {% endfor %}
+        </div> 
+<div class="section-card">
+    <h3>Latest Announcements</h3>
+
+    {% for announcement in announcements %}
+        <div class="announcement-item">
+            <strong>{{ announcement.title }}</strong>
+            <p>{{ announcement.message }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="section-card">
+    <h3>My Courses</h3>
+
+    {% for course in courses %}
+        <div class="course-item">
+            {{ course.name }}
+        </div>
+    {% endfor %}
+</div>
+<div class="section-card">
+    <h3>Upcoming Lessons</h3>
+
+    {% for lesson in lessons %}
+        <p>{{ lesson.title }}</p>
+    {% endfor %}
+</div>
+
+
+</div>
+
+        <!-- CHAT -->
+        <div id="chatSection" style="display:none;">
+<div class="form-box">
+    <h2 id="chatTitle">Chat</h2>
+
+    <h3 id="chatTeacher"></h3>
+
+    <div class="chat-box" id="chatBox"></div>
+
+    <input
+        type="text"
+        id="studentMessage"
+        placeholder="Type your message...">
+
+    <button onclick="sendMessage()">
+        Send
+    </button>
+</div>
+</div>
+       <!-- My Teachers -->
+
+<div id="myTeachersSection" style="display:none;">
+
+ <div class="form-box">
+<h2>My Teachers</h2>
+
+{% for teacher in my_teachers %}
+
+    <div class="teacher-card">
+
+        <h3>
+            {{ teacher.first_name }}
+            {{ teacher.second_name }}
+        </h3>
+
+        {% for subject in teacher.subjects.all %}
+               <p>{{ subject.name }}</p>
+        {% endfor %}
+        
+        <button onclick="openChat( {{ teacher.id }},  '{{ teacher.first_name }} {{ teacher.second_name }}')">   Chat  </button>
+
+    </div>
+
+{% empty %}
+
+    <p>You haven't selected any teachers yet.</p>
+
+{% endfor %}
+
+</div>
+</div>
+
+<!-- Payment -->
+
+<div id="paymentSection" style="display:none;">
+
+    <h2>Subscription Payment</h2>
+
+    {% if unpaid_enrollments %}
+
+        <h3>Subjects waiting for payment</h3>
+
+        {% for enrollment in unpaid_enrollments %}
+
+        <div class="teacher-card">
+
+            <h4>{{ enrollment.subject.name }}</h4>
+
+            <p>
+                Teacher :
+                {{ enrollment.teacher.first_name }}
+                {{ enrollment.teacher.second_name }}
+            </p>
+
+            <p>Price : 200 EGP</p>
+
+        </div>
+
+        {% endfor %}
+
+        <hr>
+
+        <p><b>Total Subjects :</b> {{ courses_count }}</p>
+
+        <p><b>Total Amount :</b> {{ amount }} EGP</p>
+
+        <hr>
+
+        <p><b>Etisalat Cash:</b> 01152390320</p>
+
+        <p><b>Account Name:</b> EduLearn Stage</p>
+
+        <input type="file" id="receipt" name="receipt">
+
+        <button type="button" onclick="sendReceipt()">
+            Send Receipt
+        </button>
+
+    {% else %}
+
+        <h3>✅ All your subjects are already paid.</h3>
+
+    {% endif %}
+
+</div>
+
+<!-- Subjects Section -->
+
+<div id="subjectsSection" style="display:none;">
+
+<h2>Subjects</h2>
+
+<div class="subjects-grid">
+
+    {% for subject in subjects %}
+
+    <div class="subject-card">
+
+        <h3>{{ subject.name }}</h3>
+
+        <p>Choose your teacher for this subject</p>
+
+        <button
+            class="subject-btn"
+            onclick="showTeachers({{ subject.id }})">
+
+            View Teachers
+
+        </button>
+
+        <div
+            id="teachers-{{ subject.id }}"
+            class="teachers-list"
+            style="display:none;">
+
+            {% for teacher in all_teachers %}
+
+    {% if subject in teacher.subjects.all %}
+
+    <div class="teacher-item">
+
+      <div class="teacher-info">
+
+{% if teacher.image %}
+
+<img
+    src="{{ teacher.image.url }}"
+    class="teacher-img">
+
+{% else %}
+
+<img
+    src="{% static 'images/user.png' %}"
+    class="teacher-img">
+
+{% endif %}
+
+<div class="teacher-details">
+
+<h4>
+{{ teacher.first_name }}
+{{ teacher.second_name }}
+</h4>
+
+<p>{{ subject.name }}</p>
+
+</div>
+
+</div>
+
+<button
+onclick="selectTeacher(
+{{ teacher.id }},
+{{ subject.id }},
+'{{ teacher.first_name }}',
+'{{ teacher.second_name }}',
+'{{ subject.name }}',
+this
+)">
+Select Teacher
+</button>
+
+    </div>
+
+    {% endif %}
+
+{% endfor %}
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+</div>
+        <!--   lesson section -->
+
+<div id="lessonsSection" style="display:none;">
+
+    <h2>My Lessons</h2>
+
+   {% for lesson in lessons %}
+
+<div class="lesson-card">
+
+    <h3>{{ lesson.title }}</h3>
+
+    <p>{{ lesson.description }}</p>
+
+    <a href="{% url 'watch_video' lesson.id %}">
+    Open Lesson
+</a>
+
+</div>
+
+    {% empty %}
+
+        <p>No lessons yet.</p>
+
+    {% endfor %}
+
+</div>
+
+<div id="testsSection" style="display:none;">
+
+    <h2>My Tests</h2>
+          {% for test in tests %}
+    <div class="test-card">
+        <h3>{{ test.title }}</h3>
+        <p>المدة: {{ test.duration }} دقيقة</p>
+        <p>الدرجة النهائية: {{ test.total_marks }}</p>
+        <a href="{% url 'take_test' test.id %}">ابدأ الاختبار</a>
+    </div>
+{% empty %}
+    <p>لا توجد اختبارات حالياً.</p>
+{% endfor %}
+   
+
+</div>
+
+<!-- نهاية content -->
+</div>
+
+</div>
+
+{% if notification %}
+<script>
+const notificationMessage = "✅ Subscription Approved";
+</script>
+{% endif %}
+  
+ <script src="{% static 'js/student.js' %}"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Lesson</title>
+    <style>
+        .form-box{
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:#fff;
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+.form-box input,
+.form-box select{
+
+    width:95%;
+
+    padding:14px;
+
+    margin:12px 0;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+    flex-direction: column;
+
+}
+
+.form-box button{
+
+    background:#8a4fff;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 30px;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+}
+
+.form-box button:hover{
+
+    background:#6f35ea;
+
+}
+.form-box h2{
+
+    margin-bottom:25px;
+
+    color:#7b3ff2;
+
+    text-align:center;
+
+}
+
+    </style>
+</head>
+<body>
+     <div class="form-box">
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <input type="text" name="title" value="{{ lesson.title }}" placeholder="عنوان الدرس">
+
+    <input type="text" name="description"
+           value="{{ lesson.description }}"
+           placeholder="وصف الدرس">
+
+    <input type="text" name="video_link" value="{{ lesson.video_link }}">
+    <input type="file" name="pdf">
+
+    <select name="level">
+        <option value="الصف الاول الاعدادي" {% if lesson.level == "الصف الاول الاعدادي" %}selected{% endif %}>الصف الاول الاعدادي</option>
+        <option value="الصف الثاني الاعدادي" {% if lesson.level == "الصف الثاني الاعدادي" %}selected{% endif %}>الصف الثاني الاعدادي</option>
+        <option value="الصف الثالث الاعدادي" {% if lesson.level == "الصف الثالث الاعدادي" %}selected{% endif %}>الصف الثالث الاعدادي</option>
+        <option value="الصف الاول الثانوي" {% if lesson.level == "الصف الاول الثانوي" %}selected{% endif %}>الصف الاول الثانوي</option>
+        <option value="الصف الثاني الثانوي" {% if lesson.level == "الصف الثاني الثانوي" %}selected{% endif %}>الصف الثاني الثانوي</option>
+        <option value="الصف الثالث الثانوي" {% if lesson.level == "الصف الثالث الثانوي" %}selected{% endif %}>الصف الثالث الثانوي</option>
+       
+    </select>
+
+    <button type="submit">حفظ التعديلات</button>
+</form>
+     </div>
+</body>
+</html>

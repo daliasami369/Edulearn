@@ -1,0 +1,73 @@
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'css/signup_student.css' %}">
+    <title>Sign Up</title>
+</head>
+<body>
+   <div class="EduLearn">
+                 <img src="{% static 'images/التخرج.png' %}" alt="Logo" class="logo">
+                <sup>EduLearn</sup>
+    </div>
+    {% if error %}
+    <p style="color:red;">
+    {{ error }}
+    </p>
+    {% endif %}
+    <form method="POST" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+     <h2>Sign UP</h2>
+        
+      <label><b>FirstName</b></label>
+      <input type="text" name="FirstName" id="FirstName" placeholder="FirstName">
+      
+      <br>
+      
+      <label><b>SecondName</b></label>
+      <input type="text" name="SecondName" id="SecondName" placeholder="Second Name">
+
+      <br>
+
+       <label> User Name</label>
+        <input type="text" name="UserName" id="UserName" placeholder="User Name" required>
+
+         <br>
+
+      <label><b>Password</b></label>
+      <input type="password" name="Password" id="Password" placeholder="Password">
+
+      <br>
+
+      <label> Image </label>
+      <input type="file" name="image" id="photo" accept="image/*">
+     <img id="preview" width="150">
+
+      <label><b>level</b></label>
+      <select name="level" class="level">
+        <option value="الصف الاول الاعدادي">الصف الاول الاعدادي </option>
+        <option value="الصف الثاني الاعدادي">الصف الثاني الاعدادي </option>
+        <option value="الصف الثالث الاعدادي">الصف الثالث الاعدادي </option>
+        <option value="الصف الاول الثانوي">الصف الاول الثانوي </option>
+        <option value="الصف الثاني الثانوي">الصف الثاني الثانوي </option>
+        <option value="الصف الثالث الثانوي">الصف الثالث الثانوي </option>
+      </select>
+
+      <label><b>Address</b></label>
+      <input type="text" name="Address" id="Address" placeholder="Address">
+      
+      <label><b>Email</b></label>
+      <input type="email" name="Email" id="Email" placeholder="Email">
+         
+      <label><b>Phone</b></label>
+      <input type="tel" name="Phone" id="Phone" placeholder="Phone">
+
+      <button type="submit"   id="signupbtn">Login</button>
+      <button type="button" class="cancel">Cancel</button>
+    </form>
+       <script src="{% static 'js/signup_student.js' %}"></script>
+
+</body>
+</html>

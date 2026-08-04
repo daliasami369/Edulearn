@@ -1,0 +1,442 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+
+}
+.navbar a{
+    text-decoration: none;
+    color: #000;
+    margin   : 0 10px;
+    padding: 10px;
+}
+.navbar a:hover {
+    color: rgb(126, 6, 239);
+}
+
+.head{
+
+    font-weight: bold;
+    font-size: 22px;
+     background-color:#fff;
+     margin-bottom: 10px;
+     margin-left: 10px;
+     margin-right: 10px;
+      border-radius: 10px;
+    z-index: 1000;
+    position: relative;
+}
+body{
+    background-color:rgb(228, 202, 251); 
+}
+.hero{
+    position: relative;
+}
+
+.hero img{
+    position: relative;
+    z-index: 2;
+}
+
+.circle{
+    content: '   ';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgb(231, 212, 248);  
+    z-index: 1;
+    clip-path: circle(39% );
+}
+.circle2{
+    content: '   ';
+    position: absolute;
+    right: 50%;
+    top: 20%;
+    width: 100%;
+    height: 100%;
+    background-color:rgb(231, 212, 248);  
+    z-index: 1;
+    clip-path: circle(5% );
+}
+.content {
+    height: 2500px;;
+     background-color:#fff;
+     margin-bottom: 5px;
+     border-radius: 10px;
+    margin-bottom: 10px;
+     margin-left: 10px;
+     margin-right: 10px;
+}
+
+.main button{
+    height: 30px;
+    width: 200px;
+    font-size: 20px;
+    background-color:rgb(126, 6, 239);
+    color:white;
+    border-radius: 5px;
+    border: rgb(16, 16, 129);
+}
+  .image {
+
+    background-image: linear-gradient(0,0,0,.5);
+    background-size: cover;
+    margin: 0;
+    width: 100%;       /* العرض ياخد مساحة الكارت كله */
+    height: 200px;     /* ثبتي الطول هنا (ممكن تغيريه حسب رغبتك) */
+    object-fit: cover; /* دي السحر! بتخلي الصورة تتقص بشكل متناسق بدل ما تتضغط */
+    border-radius: 8px 8px 0 0;
+    
+}
+
+.popular{
+    height:fit-content;
+    gap:10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+.PopularCourses{
+    padding: 10px;
+
+}
+.course{
+    width: 300px;
+    height: 300px;
+    background-color:rgb(231, 212, 248); 
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    margin: 20px;
+}
+.course h2{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.course:hover {
+    Transform: translateY(-8px);
+    Box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* 1. خلي الـ main يوزع الحاجة جنب بعضها */
+.main {
+    display: flex; 
+    justify-content: space-between; /* النص في ناحية والصورة في ناحية */
+    align-items: flex-start;        /* يخلي الاتنين يبدأوا من فوق خالص */
+    padding: 20px 50px;             /* مسافة داخلية بسيطة للجمال */
+    position: relative;
+    z-index: 1;
+}
+
+/* 2. جمعي النصوص (العنوان والبرجراف والزرار) في ناحية */
+.main-text {
+    flex: 1; /* ياخد المساحة المتاحة */
+    position: relative;
+}
+
+/* 3. تنسيق الصورة الجديد */
+.content .main .image {
+    width: 400px;        /* العرض اللي إنتِ عايزاه */
+    height: auto;        /* خليه auto عشان يحافظ على أبعاد الصورة */
+    margin-top: 0;       /* تأكدي إن مفيش هامش فوق */
+    padding-left: 0;     /* شيلي الـ 51% اللي كانت زاقاها لتحت */
+    object-fit: contain; /* عشان الصورة تظهر كاملة */
+}
+
+.logo{
+    width: 40px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
+}
+
+.footer-col h3 {
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    text-decoration: none;
+    color: #555;
+    font-size: 18px;
+}
+
+.footer-col a:hover {
+    color: rgb(126, 6, 239);
+}
+
+.EduLearn{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo{
+    width: 45px;
+    height: 45px;
+}
+.social span {
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.footer-container {
+    gap: 40px;
+}
+.social i {
+    font-size: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+    color: #555;
+    transition: 0.3s;
+}
+
+.social i:hover {
+    color: rgb(126, 6, 239);
+    transform: scale(1.2);
+}
+
+.lesson{
+    font-size: 15px;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.dropdown-menu{
+    position: absolute;
+    display: none;
+    top: 100%; 
+    left: 0;
+    background-color:  rgb(235, 209, 247);
+    min-width: 200px;
+    height: fit-content;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0; 
+    list-style: none;
+    z-index: 9999;
+}
+
+.dropdown{
+    position: relative;
+    opacity: 1;
+    display: block;
+}
+.nav-links{
+     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+
+}
+.dropdown-menu li a {
+    display: block;
+    width: 100%;
+   /* padding: 8px 12px;*/
+}
+.dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 15px;
+}
+.dropdown.active .dropdown-menu {
+    display: block;
+}
+
+/* --- الكود الأصلي كما هو مع إضافة هذه التعديلات في النهاية --- */
+
+/* 1. إصلاح مشكلة التداخل (Z-index) لضمان ظهور القائمة فوق المحتوى */
+.dropdown-menu {
+    position: absolute;
+    display: none;
+    top: 100%; 
+    left: 0;
+    background-color: rgb(235, 209, 247);
+    min-width: 200px;
+    z-index: 9999; /* تأكيد الأولوية */
+}
+
+/* 2. جعل قسم المحتوى مرن الطول بدل 2500px الثابتة */
+.content {
+    min-height: 100vh; /* يغطي الشاشة كاملة ويتمدد مع المحتوى */
+    height: auto; 
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden; /* لمنع خروج العناصر */
+}
+
+
+.role-modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.5);
+
+    justify-content:center;
+    align-items:center;
+}
+
+.role-box{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    width:350px;
+}
+
+.role-box button{
+    display:block;
+    width:100%;
+    margin:10px 0;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+#loginmodel{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+#loginmodel form{
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+ .explore-btn{
+      display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:16px 34px;
+    border:none;
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#7b2ff7,#a855f7);
+    color:white;
+
+    font-size:18px;
+    font-weight:600;
+    text-decoration:none;
+
+    cursor:pointer;
+    transition:.35s ease;
+
+    box-shadow:0 10px 25px rgba(123,47,247,.35);
+ }
+
+ .explore-btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 18px 35px rgba(123,47,247,.45);
+    background:linear-gradient(135deg,#6920f0,#9333ea);
+}
+
+.explore-btn:active{
+    transform:scale(.97);
+}
+/* 3. Media Queries لجعل الموقع Responsive */
+
+/* للشاشات المتوسطة (Tablets) */
+@media (max-width: 1024px) {
+    .main {
+        padding: 20px;
+    }
+    .content .main .image {
+        width: 300px; /* تصغير صورة الولد قليلاً */
+    }
+}
+
+/* للشاشات الصغيرة (Mobile) */
+@media (max-width: 768px) {
+
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .main {
+        flex-direction: column-reverse; /* الصورة تظهر فوق النص في الموبايل */
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .content .main .image {
+        width: 80%; /* الصورة تأخذ عرض الشاشة */
+        max-width: 300px;
+    }
+
+    .main-text h1 {
+        font-size: 28px;
+    }
+
+    .popular {
+        justify-content: center; /* توسيط الكورسات */
+    }
+
+    .course {
+        width: 100%; /* الكورس يأخذ العرض كامل في الموبايل الصغير */
+        max-width: 300px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}

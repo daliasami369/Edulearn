@@ -1,0 +1,247 @@
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>EduLearn</title>
+</head>
+<body>
+  <div id="notification"></div>
+        <!--  HEAD-->
+    <div class="head">
+        <nav class="navbar">
+
+            <div class="EduLearn">
+                 <img src="{% static 'images/التخرج.png' %}" alt="Logo" class="logo">
+                EduLearn
+            </div>
+          
+            <ul class="nav-links">
+                <li>
+                    <a href="{% url 'home' %}"> Home</a>
+                </li>
+                
+               <li>
+                  <a href="{% url 'about' %}"> About</a>
+               </li>
+
+              </ul> 
+
+            <div class="login">
+                <button onclick="openloginModal()" class="explore-btn"> login </button>
+                <button onclick="openRoleModal()" class="explore-btn"> Sign Up </button>
+
+            </div>   
+        </nav>
+    </div>
+    <!--   CONTENT-->
+   <div class="content">
+
+  <main class="main">
+    <div class="main-text">
+        <h1> Learn Without Limits</h1>
+        <h3>Start your journey today</h3>
+        <button type="button">Explore Courses</button>  
+    </div>
+    <div class="hero">
+    <div class="circle"></div>
+    <img class="image" src="{% static 'images/boy.png' %}" alt="Student">
+    <div class="circle2"></div>
+    </div>
+ 
+</main>
+
+   <div>
+    <h1 class="PopularCourses">  <strong>Popular Courses    </strong></h1>
+    <section class="subjects">
+  <div class="popular">
+            <div class="course">
+                  <main> <img class="image" src="{% static 'images/History.png' %}" alt="History"></main> 
+                  <i><h2>History</h2></i> 
+            </div>
+           <div class="course">
+                  <img class="image" src="{% static 'images/Physics.png' %}" alt="Physics">
+                    <i> <h2>Physics</h2> </i>
+           </div>
+          <div class="course">
+            
+                 <img class="image" src="{% static 'images/Arabic.png' %}" alt="Arabic">
+                 <i><h2>Arabic</h2> </i> 
+          </div>
+          <div class="course">
+                <img class="image" src="{% static 'images/English.png' %}" alt="English">
+                <i>  <h2>English</h2></i>
+          </div>
+           <div class="course">
+                   <img class="image" src="{% static 'images/social.png' %}" alt="social">
+                    <i><h2>Social</h2></i>
+           </div>
+          <div class="course">
+             <img class="image" src="{% static 'images/science.png' %}" alt="science">
+              <i> <h2>Science</h2></i>
+          </div>
+           
+          <div class="course">
+                <img class="image" src="{% static 'images/Philosophy.png' %}" alt="Philosophy">
+                <i><h2>Philosophy</h2> </i>
+          </div>
+         
+          <div class="course">
+                <img class="image" src="{% static 'images/Math.png' %}" alt="Math">
+                <i> <h2>Math</h2> </i>
+          </div>
+                  
+          <div class="course">
+                <img class="image" src="{% static 'images/Cheimestry.png' %}" alt="Cheimestry">
+                <i> <h2>Cheimestry</h2> </i>
+          </div>
+
+           <div class="course">
+                <img class="image" src="{% static 'images/Programming.png' %}" alt="Programming">
+                <i> <h2>Basic Programming</h2></i>
+          </div>
+
+            <div class="course">
+                <img class="image" src="{% static 'images/Geography.png' %}" alt="Geography">
+                <i><h2>Geography</h2> </i>
+           </div>
+           <div class="course">
+             <img class="image" src="{% static 'images/science.png' %}" alt="science">
+                <i> <h2>Science Completing</h2> </i>
+          </div>
+            <div class="course">
+             <img class="image" src="{% static 'images/Robot.png' %}" alt="AI">
+             <i> <h2>Artifical Intellegence</h2></i>      
+          </div>
+          <div class="course">
+             <img class="image" src="{% static 'images/science.png' %}" alt="science">
+                <i> <h2>Web Devolpment</h2> </i>
+          </div>
+           <div class="course">
+             <img class="image" src="{% static 'images/science.png' %}" alt="science">
+                <i> <h2>Game Devolpment</h2> </i>
+          </div>
+        </div>
+    </section>
+      
+
+   </div>
+   </div>
+   
+     <!--  FOOTER-->
+
+    <footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <div class="Edulearn">
+         <img src="{% static 'images/التخرج.png' %}" alt="Logo" class="logo">
+        <h2>EduLearn</h2>
+      </div>
+      <p>© 2026 EduLearn</p>
+      <p>Learn and grow with us.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Support</h3>
+      <a href="{% url 'fqa' %}">FAQ</a>
+      <a href="{% url 'contact_us' %}">Contact Us</a>
+      <a href="{% url 'service' %}">Terms of Service</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Follow Us</h3>
+  <div class="social">
+    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-youtube"></i>
+  </div>
+    </div>
+
+  </div>
+</footer>
+    
+   </div>
+      <script src="{% static 'js/signup.js' %}"></script>
+      <script src="{% static 'js/login.js' %}"></script>
+      <script src="{% static 'js/course.js' %}"></script>
+      <script src="{% static 'js/index.js' %}"></script>
+
+      <div id="roleModal" class="role-modal">
+
+    <div class="role-box">
+
+        <h2>Register As</h2>
+
+        <button onclick="location.href='/signup_teacher/'">
+            Teacher
+        </button>
+
+        <button onclick="location.href='/signup_student/'">
+            Student
+        </button>
+
+        <button onclick="closeRoleModal()">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+   <div id="loginmodel">
+
+<form action="{% url 'login' %}" method="POST"  onsubmit="alert('submitted')" >
+
+{% csrf_token %}
+
+<h2>Login</h2>
+
+<input type="text"
+       name="UserName"
+       placeholder="User Name">
+
+<input type="password"
+       name="Password"
+       placeholder="Password">
+
+<label>
+    <input type="radio"
+           name="Role"
+           value="Teacher">
+    Teacher
+</label>
+
+<label>
+    <input type="radio"
+           name="Role"
+           value="Student">
+    Student
+</label>
+
+<button type="submit">
+    Login
+</button>
+
+<button type="button"
+        onclick="closeloginModal()">
+    Cancel
+</button>
+
+</form>
+
+</div>
+
+<script src="{% static 'js/security.js' %}"></script>
+</body>
+</html>

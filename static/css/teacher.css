@@ -1,0 +1,493 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+
+}
+.navbar a{
+    text-decoration: none;
+    color: #000;
+    margin   : 0 10px;
+    padding: 10px;
+}
+.navbar a:hover {
+    color: rgb(126, 6, 239);
+}
+
+.EduLearn{
+
+     font-weight: bold;
+    font-size: 22px;
+     background-color:whitesmoke;
+     margin-bottom: 10px;
+     margin-left: 10px;
+     margin-right: 10px;
+      border-radius: 10px;
+}
+.logo{
+    width: 40px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.head{
+
+    font-weight: bold;
+    font-size: 22px;
+     background-color:#fff;
+     margin-bottom: 10px;
+     margin-left: 10px;
+     margin-right: 10px;
+      border-radius: 10px;
+    z-index: 1000;
+    position: relative;
+}
+body{
+    background-color:rgb(228, 202, 251); 
+}
+
+.nav-links{
+     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+
+}
+
+.container{
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+}
+
+.teacher{
+    width: 250px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+      position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.content{
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+.dashboard{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    width: 250px;
+    border-radius: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.dashboard li{
+    margin: 15px 0;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.dashboard a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.dashboard a:hover{
+    color: blueviolet;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imageprofile{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#teacherName{
+    margin-top: 10px;
+    color: blueviolet;
+}
+.card{
+    flex: 1;
+    width:100%;
+    max-width: 350px;
+    background-color: rgb(190, 143, 235);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: cornsilk;
+}
+
+.cards-container{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+.container{
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+}
+
+.teacher{
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.content{
+    flex: 1;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    min-height: 600px;
+}
+
+.chat-box{
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.student-card{
+    background-color: rgb(228,202,251);
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+#announcementsSection input,
+#chatSection input{
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#announcementsSection button,
+#chatSection button{
+    padding: 10px 15px;
+}
+
+.welcome-banner{
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-style:italic ;
+}
+
+.section-box{
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.course-card,
+.lesson-card,
+.announcement-card{
+    background: #f3e8ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.dashboard-sections{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:20px;
+    margin-top:30px;
+}
+
+.section-card{
+    background-color: rgb(190, 143, 235);
+    border-radius:15px;
+    padding:20px;
+    min-height:220px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    margin: 20px;
+}
+
+.section-card h3{
+    margin-bottom:15px;
+    color:white;
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logoteacher{
+    border-radius: 50px;
+    width: 100px;
+    height: 80px;
+
+}
+
+
+#testsSection input{
+
+    display:block;
+
+    width:300px;
+
+    margin:30px ;
+
+    padding:10px;
+
+
+}
+
+/* #questionsSection{
+    font-size: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: max-content;
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 5px dashed darkmagenta;
+  margin-bottom: 15px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+} */
+.result-btn{
+    background:#7c4dff;
+    color:#fff;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    transition:.2s;
+}
+
+.result-btn:hover{
+    background:#673ab7;
+}
+
+.lesson-card, .test-card {
+ 
+    background: #f8f5ff;
+    border: 1px solid #e0d0ff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.lesson-actions, .test-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.lesson-form{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+.lesson-form button{
+
+    grid-column:1/3;
+
+}
+
+.lesson-form input,
+.lesson-form select{
+    padding: 10px 12px;
+    border: 1px solid #d7c1f3;
+    border-radius: 8px;
+    min-width: 220px;
+}
+
+.lesson-form button{
+    padding: 10px 20px;
+    background: #7c4dff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.student-card{
+    background:#f8f5ff;
+    border-left:5px solid #8a4fff;
+    padding:15px 20px;
+    margin:15px 0;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.student-card h4{
+    margin:0 0 8px;
+    color:#5a2ea6;
+}
+
+.student-card span{
+    color:#666;
+}
+
+.form-box{
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:#fff;
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+.form-box input,
+.form-box select{
+
+    width:95%;
+
+    padding:14px;
+
+    margin:12px 0;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+    flex-direction: column;
+
+}
+
+.form-box button{
+
+    background:#8a4fff;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 30px;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+}
+
+.form-box button:hover{
+
+    background:#6f35ea;
+
+}
+.form-box h2{
+
+    margin-bottom:25px;
+
+    color:#7b3ff2;
+
+    text-align:center;
+
+}
+
+
+/* 3. Media Queries لجعل الموقع Responsive */
+
+
+/* للشاشات الصغيرة (Mobile) */
+@media (max-width: 768px) {
+
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .dashboard-sections{
+        grid-template-columns:1fr;
+    }
+   
+}
+#notification{
+
+position:fixed;
+
+top:20px;
+
+right:20px;
+
+padding:15px 25px;
+
+background:#28a745;
+
+color:white;
+
+font-weight:bold;
+
+border-radius:10px;
+
+display:none;
+
+z-index:9999;
+
+}
+
+#notification.show{
+
+display:block;
+
+animation:fade .3s;
+}
+
+#notification.error{
+
+background:#dc3545;
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(-20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+

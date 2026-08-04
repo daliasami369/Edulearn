@@ -1,0 +1,35 @@
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{% static 'css/take_test.css' %}">
+    <title>Take Test</title>
+</head>
+<body>
+    <h2>{{ test.title }}</h2>
+    <div class="test-container">
+  <form  method="post">
+      {% csrf_token %}
+        {% for q in test.questions.all %}
+    <p class="question">{{ q.question }}</p>
+
+    {% for choice in q.choices.all %}
+        <label>
+            <input type="radio"
+                   name="question_{{ q.id }}"
+                   value="{{ choice.id }}">
+            {{ choice.text }}
+        </label><br>
+    {% endfor %}
+{% endfor %}
+<button type="submit">إنهاء الاختبار</button>
+
+  </form>
+    </div>
+  {% if score is not None %}
+    <h3>درجتك: {{ score }}</h3>
+{% endif %}
+</body>
+</html>

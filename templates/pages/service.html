@@ -1,0 +1,162 @@
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/service.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Contact Us</title>
+</head>
+<body>
+      <div class="head">
+        <nav class="navbar">
+
+            <div class="EduLearn">
+                 <img src="{% static 'images/التخرج.png' %}" alt="Logo" class="logo">
+                EduLearn
+            </div>
+          
+            <ul class="nav-links">
+                <li>
+                    <a href="{% url 'home' %}"> Home</a>
+                </li>
+     
+               <li>
+                  <a href="{% url 'about' %}"> About</a>
+               </li>
+
+              </ul> 
+
+            <div class="login">
+                <button onclick="openloginModal()"> login </button>
+                <button onclick="openRoleModal()"> Sign Up </button>
+
+            </div>   
+        </nav>
+    </div>
+
+   <div class="body">
+     <ul>
+            <li>يلتزم المستخدم باستخدام المنصة لأغراض تعليمية فقط.</li>
+            <li>يمنع مشاركة الحساب مع الآخرين.</li>
+            <li>تحتفظ إدارة المنصة بحق تعديل المحتوى أو الشروط عند الحاجة.</li>
+            <li>يجب الالتزام بقواعد السلوك واحترام جميع المستخدمين.</li>
+        </ul>
+         <p>تابعونا علي صفحاتنا علي مواقع التواصل الاجتماعي لمعرفه عروضنا المتجددة والفريدة </p>
+   </div>
+   
+  <!--  FOOTER-->
+
+    <footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <div class="Edulearn">
+         <img src="{% static 'images/التخرج.png' %}" alt="Logo" class="logo">
+        <h2>EduLearn</h2>
+      </div>
+      <p>© 2026 EduLearn</p>
+      <p>Learn and grow with us.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'about' %}">About</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Support</h3>
+      <a href="{% url 'fqa' %}">FAQ</a>
+      <a href="{% url 'contact_us' %}">Contact Us</a>
+      <a href="{% url 'service' %}">Terms of Service</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Follow Us</h3>
+  <div class="social">
+    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-youtube"></i>
+  </div>
+    </div>
+
+  </div>
+</footer>
+    
+   </div>
+      <script src="{% static 'js/signup.js' %}"></script>
+      <script src="{% static 'js/login.js' %}"></script>
+      <script src="{% static 'js/course.js' %}"></script>
+      <script src="{% static 'js/index.js' %}"></script>
+
+      <div id="roleModal" class="role-modal">
+
+    <div class="role-box">
+
+        <h2>Register As</h2>
+
+        <button onclick="location.href='/signup_teacher/'">
+            Teacher
+        </button>
+
+        <button onclick="location.href='/signup_student/'">
+            Student
+        </button>
+
+        <button onclick="closeRoleModal()">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+   <div id="loginmodel">
+
+<form action="{% url 'login' %}" method="POST"  onsubmit="alert('submitted')" >
+
+{% csrf_token %}
+
+<h2>Login</h2>
+
+<input type="text"
+       name="UserName"
+       placeholder="User Name">
+
+<input type="password"
+       name="Password"
+       placeholder="Password">
+
+<label>
+    <input type="radio"
+           name="Role"
+           value="Teacher">
+    Teacher
+</label>
+
+<label>
+    <input type="radio"
+           name="Role"
+           value="Student">
+    Student
+</label>
+
+<button type="submit">
+    Login
+</button>
+
+<button type="button"
+        onclick="closeloginModal()">
+    Cancel
+</button>
+
+</form>
+
+</div>
+
+    <script src="{% static 'js/security.js' %}"></script>
+</body>
+</html>

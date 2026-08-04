@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment page</title>
+</head>
+<body>
+  
+   <table border="1">
+
+<tr>
+
+<th>Student</th>
+
+<th>Receipt</th>
+
+<th>Status</th>
+
+<th>Approve</th>
+
+</tr>
+
+{% for payment in payments %}
+
+<tr>
+
+<td>
+
+{{ payment.student.first_name }}
+{{ payment.student.second_name }}
+
+</td>
+
+<td>
+
+{% if payment.receipt %}
+    <a href="{{ payment.receipt.url }}">
+        View
+    </a>
+{% else %}
+    No Receipt
+{% endif %}
+
+</td>
+
+<td>
+
+{{ payment.status }}
+
+</td>
+
+<td>
+
+<a href="{% url 'approve_payment' payment.id %}">
+
+Approve
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+</body>
+</html>

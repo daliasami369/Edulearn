@@ -1,0 +1,72 @@
+.video-container{
+
+position:relative;
+
+display:inline-block;
+
+}
+
+.watermark{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) rotate(-30deg);
+
+    font-size: 45px;
+    font-weight: bold;
+
+    color: rgba(255,0,0,0.18);
+
+    pointer-events: none;
+    z-index: 9999;
+    text-align: center;
+}
+
+.meeting-box{
+    text-align:center;
+    margin-top:100px;
+}
+
+.join-btn{
+
+    background:#6c63ff;
+    color:white;
+    padding:15px 30px;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:18px;
+
+}
+
+.join-btn:hover{
+
+    background:#4d44e6;
+
+}
+
+.pdf-btn{
+
+display:inline-block;
+
+padding:12px 25px;
+
+background:#5b5be9;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:10px;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.pdf-btn:hover{
+
+background:#4444d8;
+
+}

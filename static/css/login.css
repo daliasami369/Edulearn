@@ -1,0 +1,107 @@
+body{
+    background-color:rgb(228, 202, 251); 
+    height: 100px; 
+}
+.form{
+    width: 250px;
+    height: 200px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 35%;
+    margin-top: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+html{
+      height: fit-content;  
+}
+#Password,#UserName
+{
+    width: 100%;
+    height: 20px;
+    color: rgb(133, 4, 197);
+
+}
+.EduLearn{
+
+     font-weight: bold;
+    font-size: 22px;
+     background-color:whitesmoke;
+     margin-bottom: 10px;
+     margin-left: 10px;
+     margin-right: 10px;
+      border-radius: 10px;
+}
+.logo{
+    width: 40px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.form-box{
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:#fff;
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+.form-box input,
+.form-box select{
+
+    width:95%;
+
+    padding:14px;
+
+    margin:12px 0;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+    flex-direction: column;
+
+}
+
+.form-box button{
+
+    background:#8a4fff;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 30px;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+}
+
+.form-box button:hover{
+
+    background:#6f35ea;
+
+}
+.form-box h2{
+
+    margin-bottom:25px;
+
+    color:#7b3ff2;
+
+    text-align:center;
+
+}

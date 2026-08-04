@@ -1,0 +1,39 @@
+body{
+font-family: Arial;
+background:#f5f6fa;
+margin:0;
+padding:0;
+direction:rtl;
+}
+
+.about{
+width:80%;
+margin:auto;
+padding:50px 0;
+}
+
+.about h1{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
+color:#333;
+}
+
+.about-box{
+background:white;
+padding:30px;
+margin-bottom:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about-box h2{
+color:#6c63ff;
+margin-bottom:15px;
+}
+
+.about-box p{
+font-size:18px;
+line-height:1.8;
+color:#555;
+}

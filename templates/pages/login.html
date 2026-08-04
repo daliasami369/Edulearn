@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="EduLearn">
+        <img src="{% static 'images/التخرج.png' %}" alt="Logo" class="logo">
+        EduLearn
+    </div>
+    <div class="form-box">
+        <form action="{% url 'login' %}" method="POST" class="form">
+            {% csrf_token %}
+            <h2>Login</h2>
+            <label>Name</label>
+            <br>
+            <input type="text" name="UserName" id="UserName" placeholder="User Name">
+            <br>
+            <label>Password</label>
+            <input type="password" name="Password" id="Password" placeholder="Password">
+
+            <label><b>Role</b></label>
+            <label for="Teacher">Teacher</label>
+            <input type="radio" name="Role" id="Teacher" value="Teacher">
+
+            <label for="Student">Student</label>
+            <input type="radio" name="Role" id="Student" value="Student">
+
+            <button type="submit" id="loginBtn">Login</button>
+            <button type="button" class="cancel">Cancel</button>
+        </form>
+    </div>
+    <script src="{% static 'js/login.js' %}"></script>
+
+</body>
+
+</html>

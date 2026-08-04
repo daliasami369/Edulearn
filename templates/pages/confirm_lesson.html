@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Lesson</title>
+     <style>
+        body{
+            font-family:Arial,sans-serif;
+            background:#f4f6fb;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+        .card{
+            background:#fff;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 4px 15px rgba(0,0,0,.1);
+            text-align:center;
+        }
+        .btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            color:#fff;
+            text-decoration:none;
+            margin:5px;
+        }
+        .delete{background:#e74c3c;}
+        .cancel{background:#3498db;}
+
+        .form-box{
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:#fff;
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+.form-box input,
+.form-box select{
+
+    width:95%;
+
+    padding:14px;
+
+    margin:12px 0;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+    flex-direction: column;
+
+}
+
+.form-box button{
+
+    background:#8a4fff;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 30px;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+}
+
+.form-box button:hover{
+
+    background:red;
+
+}
+.form-box h2{
+
+    margin-bottom:25px;
+
+    color:#7b3ff2;
+
+    text-align:center;
+
+}
+a{
+    display: block;
+    padding-top: 10px;
+     color:rgb(232, 10, 10);
+}
+    </style>
+</head>
+<body>
+     <div class="form-box">
+    <h3>هل أنت متأكد من حذف الدرس "{{ lesson.title }}"؟</h3>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">نعم، احذف الدرس</button>
+</form>
+
+<a href="{% url 'teacher' %}">إلغاء</a>
+</div>
+</body>
+</html>

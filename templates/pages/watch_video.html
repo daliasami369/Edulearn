@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="{% static 'css/watch_video.css' %}">
+
+</head>
+
+<body>
+
+   <div class="video-container">
+
+    <div class="watermark">
+        {{ student.first_name }}
+        <br>
+        {{ student.email }}
+    </div>
+    {% if lesson.link_type == "youtube" %}
+
+<iframe
+    width="900"
+    height="500"
+    src="{{ lesson.video_link }}?rel=0"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+</iframe>
+
+{% elif lesson.link_type == "drive" %}
+
+<iframe
+src="{{ lesson.video_link }}"
+width="900"
+height="500">
+</iframe>
+
+{% elif lesson.link_type == "meet" or lesson.link_type == "zoom" %}
+
+<div class="meeting-box">
+
+<h2>{{ lesson.title }}</h2>
+
+<p>{{ lesson.description }}</p>
+
+<a href="{{ lesson.video_link }}"
+target="_blank"
+class="join-btn">
+
+Join Lesson
+
+</a>
+
+</div>
+
+{% endif %}
+    <div class="lesson-files">
+
+<h2>Attachments</h2>
+
+{% if lesson.pdf_file %}
+
+<a class="pdf-btn"
+
+href="{{ lesson.pdf_file.url }}"
+
+target="_blank">
+
+📄 View PDF
+
+</a>
+
+{% endif %}
+
+</div>
+</div>
+    
+
+<script src="{% static 'js/security.js' %}"></script>
+
+</body>
+
+</html>

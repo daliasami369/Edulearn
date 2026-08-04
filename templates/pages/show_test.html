@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'css/show_test.css'%}"> -->
+    <link rel="stylesheet" href="{% static 'css/show_test.css' %}">
+    <title>Show Test</title>
+</head>
+<body>
+<div class="results-container">
+      <h2>نتائج اختبار {{ test.title }}</h2>
+
+{% for result in results %}
+    <div class="result-card">
+        <p><strong>الطالب:</strong> {{ result.student.username }}</p>
+        <p><strong>الدرجة:</strong> {{ result.score }}</p>
+    </div>
+{% empty %}
+    <p>لا يوجد طلاب قاموا بحل الاختبار حتى الآن.</p>
+{% endfor %}
+   
+</div>
+    
+</body>
+</html>

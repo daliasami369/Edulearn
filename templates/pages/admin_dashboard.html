@@ -1,0 +1,435 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
+</head>
+
+<body>
+<div id="notification"></div>
+<div class="sidebar">
+
+    <h2>EduLearn</h2>
+
+    <a href="#" onclick="showSection('dashboard');return false;" >Dashboard</a>
+
+    <a href="#" onclick="showSection('payment');return false;">Payment Requests</a>
+
+    <a href="#" onclick="showSection('teachers');return false;">Teachers</a>
+
+    <a href="#" onclick="showSection('students');return false;">Students</a>
+
+    <a href="#" onclick="showSection('statistics');return false;">Statistics</a>
+
+  <a href="#" onclick="showSection('subscriptions');return false;">Subscriptions</a>
+  
+</div>
+
+<div class="content">
+
+   
+
+
+<div id="dashboardSection">
+    <div class="cards">
+      <div class="card">
+
+        <h2>Welcome Admin</h2>
+
+        <p>Dalia Sami</p>
+
+    </div>
+
+    <div class="card">
+        <h3>Total Students</h3>
+        <h1>{{ students_count }}</h1>
+    </div>
+
+    <div class="card">
+        <h3>Total Teachers</h3>
+        <h1>{{ teachers_count }}</h1>
+    </div>
+
+    <div class="card">
+        <h3>Total Courses</h3>
+        <h1>{{ courses_count }}</h1>
+    </div>
+
+    <div class="card">
+        <h3>Pending Payments</h3>
+        <h1>{{ pending_count }}</h1>
+    </div>
+
+</div>
+
+</div>
+ <!-- نهاية dashboardSection -->
+
+
+  <!--  PAYMENT -->
+       <div id="paymentsection" style="display:none;">
+
+<table>
+
+<tr>
+
+<th>Student</th>
+
+<th>Courses</th>
+<th>Subjects Count</th>
+
+<th>Amount</th>
+
+<th>Receipt</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+{% for payment in payments %}
+
+<tr id="payment{{ payment.id }}">
+
+<td>
+
+{{ payment.student.first_name }}
+
+{{ payment.student.second_name }}
+
+</td>
+       <td>
+
+{% for enroll in payment.student.enrollments.all %}
+
+{{ enroll.subject.name }}<br>
+
+{% empty %}
+    <h4>لا يوجد طلابات دفع </h4>
+{% endfor %}
+</td>
+
+<td>
+
+{% for enroll in payment.student.enrollments.all %}
+{{ enroll.subject.name }}<br>
+{% endfor %}
+
+</td>
+
+<td>
+
+{{ payment.amount }} EGP
+
+</td>
+<td>
+    {{ payment.student.enrollments.count }}
+</td>
+<td>
+
+{% if payment.receipt %}
+
+<a href="{{ payment.receipt.url }}" target="_blank">
+    <img
+        src="{{ payment.receipt.url }}"
+        width="120"
+        style="cursor:pointer;border-radius:8px;"
+        class="receipt-img"
+    >
+</a>
+
+{% else %}
+
+No Receipt
+
+{% endif %}
+
+</td>
+
+<td>
+
+{{ payment.status }}
+
+</td>
+
+<td>
+
+<button onclick="approvePayment({{ payment.id }})">
+    Approve
+</button>
+
+<button onclick="rejectPayment({{ payment.id }})">
+    Reject
+</button>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+      </div>
+                  <!--  TEACHERS -->
+       <div id="teachersection" style="display:none;">
+
+<h2>Teachers</h2>
+
+<table class="admin-table">
+
+<tr>
+
+    <th>Name</th>
+
+    <th>Subject</th>
+
+    <th>Students</th>
+
+    <th>Lessons</th>
+
+    <th>Action</th>
+
+</tr>
+
+{% for teacher in teachers %}
+
+<tr>
+
+    <td>
+        {{ teacher.first_name }}
+        {{ teacher.second_name }}
+    </td>
+
+    <td>
+    {% for subject in teacher.subjects.all %}
+        {{ subject.name }}<br>
+    {% empty %}
+        No Subject
+    {% endfor %}
+</td>
+
+    <td>
+
+        {{ teacher.students_enrolled.count }}
+
+    </td>
+
+    <td>
+
+        {{ teacher.lesson_set.count }}
+
+    </td>
+
+    <td>
+<a href="{% url 'delete_teacher' teacher.id %}">
+    <button class="delete-btn">
+        Delete
+    </button>
+</a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+       <!--  STUDENTS -->
+       <div id="studentsection" style="display:none;">
+
+<h2>Students</h2>
+<table class="admin-table">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subjects</th>
+        <th>Teachers</th>
+        <th>Paid</th>
+        <th>Subscription End</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for student in students %}
+    <tr id="student{{ student.id }}">
+
+        <td>
+            {{ student.first_name }} {{ student.second_name }}
+        </td>
+
+        <td>
+            {{ student.email }}
+        </td>
+       <td>
+{% for enroll in student.enrollments.all %}
+    {{ enroll.subject.name }}<br>
+{% empty %}
+    ---
+{% endfor %}
+</td>
+          <td>
+             {% for enroll in student.enrollments.all %}
+                {{ enroll.teacher.first_name }}
+               {{ enroll.teacher.second_name }}<br>
+                {% empty %}
+                     ---
+              {% endfor %}
+             </td>
+        <td>
+
+        {{ student.enrollments.count }}
+
+    </td>
+
+    <td>
+
+        {{ student.is_paid }}
+
+    </td>
+
+    <td>
+
+        {{ student.subscription_end }}
+
+    </td>
+        <td class="status">
+            {% if student.is_active %}
+                Active
+            {% else %}
+                Blocked
+            {% endif %}
+        </td>
+
+
+<td class="action">
+    {% if student.is_active %}
+        <button onclick="blockStudent({{ student.id }})">Block</button>
+    {% else %}
+        <button onclick="unblockStudent({{ student.id }})">Unblock</button>
+    {% endif %}
+</td>
+
+
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+
+       <!--  STATISTICS -->
+       <div id="statisticsection" style="display:none;">
+
+<h2>Statistics</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Total Students</h3>
+
+<h1>{{ students.count }}</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Total Teachers</h3>
+
+<h1>{{ teachers.count }}</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Total Lessons</h3>
+
+<h1>{{ lessons.count }}</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Total Courses</h3>
+
+<h1>{{ courses.count }}</h1>
+
+</div>
+
+</div>
+
+</div>
+
+       <!--  SUBSCRIPTIONS -->
+       <div id="subscriptiosection" style="display:none;">
+
+<h2>Subscriptions</h2>
+
+<table class="admin-table">
+
+<tr>
+
+<th>Student</th>
+
+<th>Status</th>
+
+<th>End Date</th>
+
+<th>Renew</th>
+
+</tr>
+
+{% for student in students %}
+
+<tr>
+
+<td>
+
+{{ student.first_name }}
+
+{{ student.second_name }}
+
+</td>
+
+<td>
+
+{{ student.is_paid }}
+
+</td>
+
+<td>
+
+{{ student.subscription_end }}
+
+</td>
+
+<td>
+
+<a href="{% url 'renew_subscription' student.id %}">
+    <button class="renew-btn">
+        Renew
+    </button>
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>             
+      <script src="{% static 'js/admin_dashboard.js' %}"></script>
+</body>
+
+</html>

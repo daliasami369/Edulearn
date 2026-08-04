@@ -1,0 +1,21 @@
+body{
+    background:#f5f7fb;
+    font-family:Tahoma,sans-serif;
+}
+
+.results-container{
+    max-width:700px;
+    margin:40px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+.result-card{
+    padding:15px;
+    margin:15px 0;
+    border-right:4px solid #6c63ff;
+    background:#fafaff;
+    border-radius:10px;
+}
