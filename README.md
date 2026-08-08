@@ -50,6 +50,12 @@ The project was built to simulate a real-world e-learning platform where teacher
 - REST API
 - Mobile application
 
+ ## 🚀 Live Demo
+
+You can view the live website here:
+
+👉 [Visit the Live Website](https://daliasami.pythonanywhere.com/index/)
+
 ## 👩‍💻 Developer
 
 **Dalia Sami**
